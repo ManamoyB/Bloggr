@@ -1,0 +1,144 @@
+@font-face {
+  font-family: 'Raleway';
+  src: url('/fonts/files/raleway-latin-400-normal.woff2') format('woff2'),
+       url('/fonts/files/raleway-latin-400-normal.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.landingPage {
+  margin: 0;
+  padding: 10px;
+  background-image: url("/asserts/images/landing/bg_image.png"); /* Replace with your image path */
+  background-size: cover; /* Cover the full screen */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-attachment: fixed; /* Keep image fixed while scrolling */
+  background-position: center; /* Center the image */
+  color: white;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 50px;
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+}
+
+.right-container {
+  flex: 1; /* Takes available space */
+  text-align: center;
+  max-width: 50%;
+  padding: 10px;
+}
+
+.rc-img {
+  max-width: 70%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.left-container {
+  flex: 1; /* Takes available space */
+  max-width: 50%;
+  padding: 10px;
+}
+
+.lc-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.lc-containt {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.lc-button {
+  display: flex;
+  gap: 10%;
+}
+
+.secondary-btn {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.secondary-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-container {
+    margin-top: 20px;
+      padding: 20px;
+      flex-direction: column; /* Stack elements vertically */
+      align-items: center;
+  }
+
+  .left-container,
+  .right-container {
+      max-width: 100%;
+      text-align: center;
+      margin-bottom: 20px; /* Space between sections */
+  }
+
+  .lc-heading {
+      font-size: 2.5rem; /* Smaller heading on mobile */
+  }
+
+  .lc-containt {
+      font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  .rc-img {
+      max-width: 40%; /* Reduce image size */
+      margin-bottom: 20px;
+  }
+
+  .lc-button {
+      flex-direction: column;
+      gap: 20px; /* Increase gap between buttons */
+  }
+
+  .secondary-btn {
+      padding: 12px 25px; /* Slightly larger button on mobile */
+      font-size: 1.1rem; /* Adjust button text size */
+  }
+}
+
+@media (max-width: 480px) {
+  .lc-heading {
+      font-size: 2rem; /* Further reduce heading size */
+  }
+  .lc-containt {
+      font-size: 0.9rem; /* Adjust font size for very small screens */
+  }
+
+  .secondary-btn {
+      padding: 10px 15px; /* Smaller buttons */
+      font-size: 1rem; /* Standard font size for buttons */
+  }
+}

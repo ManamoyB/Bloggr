@@ -1,0 +1,206 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/files/raleway-latin-400-normal.woff2') format('woff2'),
+         url('/fonts/files/raleway-latin-400-normal.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; 
+    border-bottom: 2px solid #e0e0e0; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px; 
+}
+
+.left-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo_img {
+    width: 100px; /* Adjust logo size */
+}
+
+.right-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+}
+
+.right-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.right-nav ul:hover {
+    color: #7C4EE4;
+}
+.primary-btn:hover
+{
+    background-color: #ffffff;
+    box-shadow: inset 0px 0px 0px 0px #000000;
+    background: linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+    text-shadow: 0px 0px 0px #ffffff;
+    color: #7C4EE4;
+    border: 2px,solid,black;
+}
+
+.primary-btn {
+    box-shadow: inset 0px 0px 0px 0px #7C4EE4;
+    background: linear-gradient(to bottom, #7C4EE4 5%, #7C4EE4 100%);
+    background-color: #7C4EE4;
+    border-radius: 8px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 20px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #528ecc;
+    text-align: center;
+}
+
+/* Responsive Styles */
+
+/* Tablets and smaller laptops */
+@media (max-width: 1024px) {
+    .right-nav {
+        gap: 10px; /* Reduce gap between items */
+        font-size: 14px;
+    }
+    .logo_img {
+        width: 80px; /* Shrink logo */
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .right-nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .right-nav ul {
+        width: 100%;
+        text-align: left;
+    }
+
+    .primary-btn {
+        text-align: center;
+        width: 100%; /* Make button full width */
+        padding: 12px 0;
+    }
+
+    .logo_img {
+        width: 70px; /* Smaller logo for mobile */
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .logo_img {
+        width: 60px; /* Smallest size */
+    }
+
+    .primary-btn {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .right-nav {
+        font-size: 12px;
+    }
+}
+
+/* Hamburger Button */
+.hamburger {
+    display: none; /* Hidden on larger screens */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 5px;
+}
+
+/* Navbar Links: Hidden by default on mobile */
+#navbar-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+#navbar-links.active {
+    display: flex;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+    }
+
+    .hamburger {
+        display: flex; /* Show toggle button on small screens */
+    }
+
+    #navbar-links {
+        display: none; /* Hide links initially */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Position below the navbar */
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        align-items: center;
+        gap: 0px;
+    }
+    
+
+    #navbar-links ul, 
+    #navbar-links a {
+        padding: 10px 10px;
+        text-align: center;
+        width: 100%;
+    }
+}
