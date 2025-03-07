@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/postBLog.css">
+    <title>Create Blog</title>
+</head>
+<body>
+    <div class="post_blog_container">
+        <h1>Create a Blog</h1>
+        <form id="blogForm" method="POST" action="/post-blog" enctype="multipart/form-data">
+            <label for="title">Blog Title:</label>
+            <input type="text" name="title" id="title" placeholder="Enter Blog Title" required />
+
+            <label for="author">Author Name:</label>
+            <input type="text" name="author" id="author" placeholder="Enter Author Name" required />
+
+            <label for="headerImage">Header Image:</label>
+            <input type="file" name="headerImage" id="headerImage" accept="image/*" />
+
+            <label>Blog Content:</label>
+            <div id="editor"></div>
+            <textarea name="content" id="content" style="display: none;"></textarea>
+
+            <button type="submit">Save Blog</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    <script>
+        // Initialize Quill editor with image upload option
+        const quill = new Quill("#editor", {
+            theme: "snow",
+            modules: {
+                toolbar: {
+                    container: [
+                        [{ header: [1, 2, false] }],
+                        ["bold", "italic", "underline"],
+                        ["image", "link"],
+                        [{ list: "ordered" }, { list: "bullet" }]
+                    ],
+                    handlers: {
+                        image: function () {
+                            selectLocalImage();
+                        }
+                    }
+                }
+            }
+        });
+
+        // Handle image selection and upload
+        function selectLocalImage() {
+            const input = document.createElement("input");
+            input.setAttribute("type", "file");
+            input.setAttribute("accept", "image/*");
+            input.click();
+
+            input.onchange = async () => {
+                const file = input.files[0];
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("image", file);
+
+                    // Upload the image to the server
+                    const response = await fetch("/upload-image", {
+                        method: "POST",
+                        body: formData
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        insertToEditor(data.url);
+                    } else {
+                        alert("Image upload failed");
+                    }
+                }
+            };
+        }
+
+        // Insert uploaded image URL into the editor
+        function insertToEditor(url) {
+            const range = quill.getSelection();
+            quill.insertEmbed(range.index, "image", url);
+        }
+
+        // Transfer Quill content to the hidden textarea on form submit
+        document.getElementById("blogForm").onsubmit = function () {
+            document.getElementById("content").value = quill.root.innerHTML;
+        };
+    </script>
+</body>
+</html>

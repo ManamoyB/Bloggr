@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLog Website</title>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- Left Nav: Logo -->
+        <div class="left-nav">
+            <div class="logo_div">
+                <img onClick="window.location.href='/'" class="logo_img" src="/asserts/images/Header/Logo.png" alt="Logo">
+            </div>
+        </div>
+
+        <!-- Right Nav: Links -->
+        <div class="right-nav" id="navbar-links">
+            <ul onClick="window.location.href='/'">Home</ul>
+            <ul onClick="window.location.href='/createBlog'">Create Blogs</ul>
+        <ul onClick="window.location.href='/readBlog'">All Blogs</ul>
+            <a class="primary-btn" href="/ContactUs">Contact Us</a>
+        </div>
+
+        <!-- Toggle Button for Mobile -->
+        <div class="hamburger" id="hamburger-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <script>
+        // JavaScript for Toggle Functionality
+        const toggleButton = document.getElementById('hamburger-toggle');
+        const navbarLinks = document.getElementById('navbar-links');
+
+        toggleButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
